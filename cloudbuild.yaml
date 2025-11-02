@@ -14,8 +14,8 @@ steps:
       - --filename=gke.yaml
       # Tell gke-deploy to use the REAL image we just built
       - --image=gcr.io/$PROJECT_ID/gcpdevops
-      - --location=us-central1
-      - --cluster=gcp-devops
+      - --location=us-central1-a
+      - --cluster=gcp-devops-project
       - --namespace=gcp-devops-project
 options:
   logging: CLOUD_LOGGING_ONLY
