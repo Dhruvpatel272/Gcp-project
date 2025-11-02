@@ -1,5 +1,10 @@
 steps:
-- name: 'docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcpdevops', '.']
-images:
-- 'gcr.io/$PROJECT_ID/gcp'    
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['version']
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/my-image', '.' ]
+# ...any other steps you have...
+
+# ADD THIS 3-LINE BLOCK AT THE END
+options:
+  logging: CLOUD_LOGGING_ONLY
