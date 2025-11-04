@@ -17,7 +17,7 @@ spec:
         # --- THIS IS THE FIX ---
         # The full, hardcoded image path.
         # This matches the --image flag in cloudbuild.yaml
-        image: gcr.io/ambient-inquiry-473611-t8/gcpdevops
+        image: gcr.io/ambient-inquiry-473611-t8/gcpdevops-dev:latest
         ports:
         - containerPort: 5000
         env:
@@ -29,7 +29,7 @@ apiVersion: "v1"
 kind: "Service"
 metadata:
     name: "gcp-devops-gke-service"
-    namespace: "gcp-devops-project"
+    namespace: "gcp-devops-project-dev"
     labels:
       app.kubernetes.io/managed-by: "gcp-cloud-build-deploy"
 spec:
