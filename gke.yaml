@@ -15,9 +15,9 @@ spec:
       containers:
       - name: gcp-devops-container
         # --- THIS IS THE FIX ---
-        # This is a simple placeholder.
-        # Your cloudbuild.yaml will replace this with the real image.
-        image: gcpdevops-placeholder
+        # The full, hardcoded image path.
+        # This matches the --image flag in cloudbuild.yaml
+        image: gcr.io/ambient-inquiry-473611-t8/gcpdevops
         ports:
         - containerPort: 5000
         env:
