@@ -6,19 +6,20 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gcp
+      app: gcp-devops-gke
   template:
     metadata:
       labels:
-        app: gcp
+        app: gcp-devops-gke
     spec:
       containers:
-        - name: gcp-devops-gke
-          image: gcr.io/my first project/gcpdevops:latest
-          ports:
-            - containerPort: 5000
-          env:
-            - name: PORT
-              value: "5000"
-
- 
+      - name: gcp-devops-container
+        # --- THIS IS THE FIX ---
+        # This is a simple placeholder.
+        # Your cloudbuild.yaml will replace this with the real image.
+        image: gcpdevops-placeholder
+        ports:
+        - containerPort: 5000
+        env:
+        - name: PORT
+          value: "5000"
