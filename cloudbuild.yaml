@@ -16,6 +16,7 @@ steps:
   - --location=us-central1-a
   - --cluster=gcp-devops-project
   - --namespace=gcp-devops-project
-    
+options:
+  logging: CLOUD_LOGGING_ONLY
 
 
