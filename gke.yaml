@@ -7,13 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gcp
+      app: gcp-devops-gke
   template:
     metadata:
       labels:
-        app: gcp
+        app: gcp-devops-gke
     spec:
       containers:
+
         - name: gcp-devops-gke
           image: gcr.io/ambient-inquiry-473611-t8/gcpdevops:latest
           ports:
@@ -36,3 +37,13 @@ spec:
       targetPort: 5000
   type: LoadBalancer
  
+
+      - name: gcp-devops-container
+        # --- THIS IS THE FIX ---
+        # A simple, valid placeholder. NO variables.
+        image: gcpdevops-placeholder
+        ports:
+        - containerPort: 5000
+        env:
+        - name: PORT
+          value: "5000"
