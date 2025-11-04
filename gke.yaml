@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: gcp-devops-gke
+  namespace: gcp-devops-project
 spec:
   replicas: 1
   selector:
@@ -13,6 +14,30 @@ spec:
         app: gcp-devops-gke
     spec:
       containers:
+
+        - name: gcp-devops-gke
+          image: gcr.io/ambient-inquiry-473611-t8/gcpdevops:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: PORT
+              value: "5000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gcp-devops-service
+  namespace: gcp-devops-project
+spec:
+  selector:
+    app: gcp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: LoadBalancer
+ 
+
       - name: gcp-devops-container
         # --- THIS IS THE FIX ---
         # A simple, valid placeholder. NO variables.
